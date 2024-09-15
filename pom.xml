@@ -6,29 +6,32 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.3</version>
-        <relativePath/>
     </parent>
     <groupId>com.iprody.crm</groupId>
     <artifactId>payment-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <properties>
+        <java.version>21</java.version>
+        <checkstyle-maven-plugin.version>3.5.0</checkstyle-maven-plugin.version>
+        <openapi.version>1.6.4</openapi.version>
+        <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+        <puppycrawl-checkstyle.version>10.18.1</puppycrawl-checkstyle.version>
+        <r2dbc-postgresql.version>1.0.5.RELEASE</r2dbc-postgresql.version>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
-            <version>3.3.3</version>
         </dependency>
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/r2dbc-postgresql -->
         <dependency>
             <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <artifactId>r2dbc-postgresql</artifactId>
+            <version>${r2dbc-postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -43,15 +46,45 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.4</version>
+            <version>${openapi.version}</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
         <finalName>payment-service</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${checkstyle-maven-plugin.version}</version>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>true</linkXRef>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${puppycrawl-checkstyle.version}</version>
+                    </dependency>
+                </dependencies>
+
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

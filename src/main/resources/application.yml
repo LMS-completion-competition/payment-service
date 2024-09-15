@@ -1,2 +1,7 @@
-server:
-  port: 9090
+spring:
+  application:
+    name: payment-service
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/payment_service
+    username: postgres
+    password: postgres

@@ -1,0 +1,32 @@
+services:
+  payment-service:
+    image: payment-service:latest
+    container_name: payment-service
+    environment:
+      DEBUG_PORT: ${DEBUG_PORT}
+    ports:
+      - ${TLS}:${TLS}
+      - ${N_TLS}:${N_TLS}
+      - ${DEBUG_PORT}:${DEBUG_PORT}
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: unless-stopped
+    user: postgres
+    environment:
+      - POSTGRES_DB=payment_service
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    expose:
+      - ${DB_PORT}:${DB_PORT}
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+
