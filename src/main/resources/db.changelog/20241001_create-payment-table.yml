@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - preConditions:
+      - runningAs:
+          username:  postgres
+  - changeSet:
+      id:  1
+      author:  Akyl Nasirdinov
+      labels: create-payment-table
+      changes:
+        - createTable:
+            tableName:  payments
+            columns:
+              - column:
+                  name:  id
+                  type:  bigint
+                  autoIncrement:  true
+                  incrementBy: 1
+                  constraints:
+                    primaryKey:  true
+                    nullable:  false
+              - column:
+                  name:  inquiry_reference_id
+                  type:  bigint
+                  constraints:
+                    nullable:  false
+              - column:
+                  name:  amount
+                  type:  numeric(5,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name:  currency
+                  type:  varchar(3)
+                  constraints:
+                    nullable: false
+              - column:
+                  name:  transaction_reference_id
+                  type:  bigint
+                  constraints:
+                    unique: true
+              - column:
+                  name: status
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp
+
+      rollback:
+        - dropTable:
+            tableName: payments

@@ -4,6 +4,8 @@ services:
     container_name: payment-service
     environment:
       DEBUG_PORT: ${DEBUG_PORT}
+      DB_HOST: db
+      DB_PORT: ${DB_PORT}
     ports:
       - ${TLS}:${TLS}
       - ${N_TLS}:${N_TLS}
