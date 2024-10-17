@@ -1,3 +1,5 @@
+package com.iprody.crm.paymentservice.services;
+
 import com.iprody.crm.paymentservice.domains.entities.Payment;
 import com.iprody.crm.paymentservice.domains.enums.PaymentCurrency;
 import com.iprody.crm.paymentservice.repositories.PaymentRepository;
