@@ -20,7 +20,7 @@ databaseChangeLog:
                     nullable:  false
               - column:
                   name:  inquiry_reference_id
-                  type:  bigint
+                  type:  UUID
                   constraints:
                     nullable:  false
               - column:
