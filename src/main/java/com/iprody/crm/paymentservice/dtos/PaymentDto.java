@@ -16,14 +16,14 @@ import java.util.UUID;
  * different layers of the application (e.g., services, controllers, or external systems).
  * </p>
  *
- * @param id                  the unique identifier of the payment
+ * @param guid                  the unique identifier of the payment
  * @param inquiryReferenceId   the reference ID of the inquiry associated with the payment
  * @param amount               the amount of the payment transaction
  * @param currency             the currency in which the payment was made (e.g., USD, EUR)
  * @param status               the current status of the payment (e.g., PENDING, COMPLETED, FAILED)
  * @param createdAt            the timestamp when the payment was created
  */
-public record PaymentDto(long id,
+public record PaymentDto(UUID guid,
                          UUID inquiryReferenceId,
                          BigDecimal amount,
                          PaymentCurrency currency,

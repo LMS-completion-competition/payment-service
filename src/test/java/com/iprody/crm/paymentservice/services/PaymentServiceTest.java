@@ -14,6 +14,7 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.eq;
@@ -36,6 +37,7 @@ public class PaymentServiceTest {
         when(paymentRepository.save(ArgumentMatchers.any(Payment.class))).thenReturn(
                 Mono.just(Payment.builder()
                         .id(1L)
+                        .guid(UUID.randomUUID())
                         .amount(payment.getAmount())
                         .inquiryReferenceId(payment.getInquiryReferenceId())
                         .currency(payment.getCurrency())
@@ -47,6 +49,7 @@ public class PaymentServiceTest {
                 .consumeNextWith(
                         createdPayment -> {
                             assertThat(createdPayment.getId()).isNotNull();
+                            assertThat(createdPayment.getGuid()).isNotNull();
                             assertThat(createdPayment.getCurrency()).isEqualTo(PaymentCurrency.USD);
                             assertThat(createdPayment.getAmount()).isEqualTo(payment.getAmount());
                         })
@@ -55,14 +58,15 @@ public class PaymentServiceTest {
 
     @Test
     public void whenFindById_ThenReturnPayment() {
+        UUID existingPaymentId = UUID.randomUUID();
         Payment existingPayment = Payment.builder()
-                .id(1L)
+                .guid(existingPaymentId)
                 .amount(BigDecimal.valueOf(200L))
                 .currency(PaymentCurrency.USD)
                 .build();
-        when(paymentRepository.findById(ArgumentMatchers.any(Long.class)))
+        when(paymentRepository.findByGuid(ArgumentMatchers.any(UUID.class)))
                 .thenReturn(Mono.just(existingPayment));
-        Mono<Payment> foundPaymentMono = paymentService.findById(1L);
+        Mono<Payment> foundPaymentMono = paymentService.findByGuid(existingPaymentId);
         StepVerifier.create(foundPaymentMono)
                 .consumeNextWith(foundPayment -> assertThat(foundPayment).isNotNull())
                 .verifyComplete();
@@ -70,11 +74,11 @@ public class PaymentServiceTest {
 
     @Test
     public void givenNotExistingId_WhenFindById_ThenReturnMonoError() {
-        long nonExistingPaymentId = -1L;
+        UUID nonExistingPaymentId = UUID.randomUUID();
         String exceptionMessage = String.format("Payment by id %s not found", nonExistingPaymentId);
-        when(paymentRepository.findById(eq(nonExistingPaymentId)))
+        when(paymentRepository.findByGuid(eq(nonExistingPaymentId)))
                 .thenReturn(Mono.empty());
-        Mono<Payment> monoWithError = paymentService.findById(nonExistingPaymentId);
+        Mono<Payment> monoWithError = paymentService.findByGuid(nonExistingPaymentId);
         StepVerifier.create(monoWithError)
                 .consumeErrorWith(error -> {
                     assertThat(error).hasMessage(exceptionMessage);

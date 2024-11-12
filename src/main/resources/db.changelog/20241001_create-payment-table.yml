@@ -7,17 +7,23 @@ databaseChangeLog:
       author:  Akyl Nasirdinov
       labels: create-payment-table
       changes:
+        - sql: CREATE EXTENSION IF NOT EXISTS pgcrypto;
         - createTable:
             tableName:  payments
             columns:
               - column:
                   name:  id
-                  type:  bigint
+                  type:  BIGINT
                   autoIncrement:  true
                   incrementBy: 1
                   constraints:
                     primaryKey:  true
                     nullable:  false
+              - column:
+                  name: guid
+                  type: UUID
+                  constraints:
+                    nullable: false
               - column:
                   name:  inquiry_reference_id
                   type:  UUID
@@ -25,32 +31,38 @@ databaseChangeLog:
                     nullable:  false
               - column:
                   name:  amount
-                  type:  numeric(5,2)
+                  type:  NUMERIC(5,2)
                   constraints:
                     nullable: false
               - column:
                   name:  currency
-                  type:  varchar(3)
+                  type:  VARCHAR(3)
                   constraints:
                     nullable: false
               - column:
                   name:  transaction_reference_id
-                  type:  bigint
+                  type:  BIGINT
                   constraints:
                     unique: true
               - column:
                   name: status
-                  type: varchar(255)
+                  type: VARCHAR(255)
                   constraints:
                     nullable: false
               - column:
                   name: created_at
-                  type: timestamp
+                  type: TIMESTAMP
                   constraints:
                     nullable: false
               - column:
                   name: updated_at
-                  type: timestamp
+                  type: TIMESTAMP
+        - createIndex:
+            columns:
+              - column:
+                  name: guid
+            indexName: payment_guid_idx
+            tableName: payments
 
       rollback:
         - dropTable:

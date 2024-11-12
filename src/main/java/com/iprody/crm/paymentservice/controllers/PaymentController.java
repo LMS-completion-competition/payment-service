@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Tag(name = "Payments API")
 @RestController
 @RequiredArgsConstructor
@@ -31,7 +33,7 @@ public class PaymentController {
         @ApiResponse(responseCode = "404", description = "Schema not found"),
         @ApiResponse(responseCode = "500", description = "Internal error")
     })
-    public Mono<PaymentDto> findPaymentById(@RequestParam("id") long id) {
+    public Mono<PaymentDto> findPaymentById(@RequestParam("id") UUID id) {
         return paymentMediator.findById(id);
     }
 
