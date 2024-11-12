@@ -30,8 +30,8 @@ public class PaymentController {
     @Operation(summary = "method for finding payments by id", responses = {
         @ApiResponse(responseCode = "200", description = "Successfully found payment"),
         @ApiResponse(responseCode = "400", description = "Missing payment id"),
-        @ApiResponse(responseCode = "404", description = "Schema not found"),
-        @ApiResponse(responseCode = "500", description = "Internal error")
+        @ApiResponse(responseCode = "404", description = "Payment not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     public Mono<PaymentDto> findPaymentById(@RequestParam("id") UUID id) {
         return paymentMediator.findById(id);
@@ -40,9 +40,9 @@ public class PaymentController {
     @PostMapping
     @Operation(summary = "method for creating payments", responses = {
         @ApiResponse(responseCode = "200", description = "Successfully created payment"),
-        @ApiResponse(responseCode = "400", description = "Missing request body or one of required fields"),
-        @ApiResponse(responseCode = "404", description = "Schema not found"),
-        @ApiResponse(responseCode = "500", description = "Internal error")
+        @ApiResponse(responseCode = "400", description = "Missing request body"),
+        @ApiResponse(responseCode = "404", description = "Missing request one of required fields"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     public Mono<PaymentDto> createPayment(@Valid @RequestBody PaymentCreateDto createdPayment) {
         return paymentMediator.create(createdPayment);

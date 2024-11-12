@@ -2,6 +2,7 @@ package com.iprody.crm.paymentservice.services;
 
 import com.iprody.crm.paymentservice.domains.entities.Payment;
 import com.iprody.crm.paymentservice.domains.enums.PaymentCurrency;
+import com.iprody.crm.paymentservice.exceptions.PaymentNotFoundException;
 import com.iprody.crm.paymentservice.repositories.PaymentRepository;
 import com.iprody.crm.paymentservice.services.impl.PaymentServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -82,7 +83,7 @@ public class PaymentServiceTest {
         StepVerifier.create(monoWithError)
                 .consumeErrorWith(error -> {
                     assertThat(error).hasMessage(exceptionMessage);
-                    assertThat(error).isInstanceOf(IllegalArgumentException.class);
+                    assertThat(error).isInstanceOf(PaymentNotFoundException.class);
                 })
                 .verify();
     }
