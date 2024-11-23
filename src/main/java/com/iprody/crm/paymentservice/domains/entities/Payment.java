@@ -26,21 +26,15 @@ import java.util.UUID;
 public class Payment {
     @Id
     Long id;
-
+    UUID guid;
     UUID inquiryReferenceId;
-
     BigDecimal amount;
-
     PaymentCurrency currency;
-
     Long transactionReferenceId;
-
     @Builder.Default
     PaymentStatus status = PaymentStatus.NEW;
-
     @CreatedDate
     Instant createdAt;
-
     @LastModifiedDate
     Instant updatedAt;
 }

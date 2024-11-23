@@ -34,6 +34,7 @@ public class PaymentMapperUnitTest {
                 PaymentCurrency.USD);
         mockPayment = Payment.builder()
                 .id(1L)
+                .guid(UUID.randomUUID())
                 .amount(BigDecimal.valueOf(250L))
                 .currency(PaymentCurrency.USD)
                 .status(PaymentStatus.NEW)
@@ -72,7 +73,7 @@ public class PaymentMapperUnitTest {
         PaymentDto mappedPaymentDto = paymentMapper.to(mockPayment);
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(mappedPaymentDto).isNotNull();
-        softAssertions.assertThat(mappedPaymentDto.id()).isEqualTo(mockPayment.getId());
+        softAssertions.assertThat(mappedPaymentDto.guid()).isEqualTo(mockPayment.getGuid());
         softAssertions.assertThat(mappedPaymentDto.amount()).isEqualTo(mockPayment.getAmount());
         softAssertions.assertThat(mappedPaymentDto.currency()).isEqualTo(mockPayment.getCurrency());
         softAssertions.assertThat(mappedPaymentDto.inquiryReferenceId()).isEqualTo(mockPayment.getInquiryReferenceId());

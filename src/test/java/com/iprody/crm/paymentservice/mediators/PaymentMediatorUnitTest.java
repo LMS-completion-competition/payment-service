@@ -70,9 +70,9 @@ public class PaymentMediatorUnitTest {
 
     @Test
     public void whenFindById_ThenReturnPayment() {
-        when(paymentService.findById(ArgumentMatchers.any(Long.class)))
+        when(paymentService.findByGuid(ArgumentMatchers.any(UUID.class)))
                 .thenReturn(Mono.just(mockPayment));
-        Mono<PaymentDto> foundPaymentMono = paymentMediator.findById(1L);
+        Mono<PaymentDto> foundPaymentMono = paymentMediator.findById(UUID.randomUUID());
         StepVerifier
                 .create(foundPaymentMono)
                 .consumeNextWith(

@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 /**
  * The {@code PaymentMediator} interface defines methods for creating and retrieving payment information.
  * It acts as an abstraction layer that mediates between the client and the payment processing service.
@@ -59,8 +61,8 @@ public class PaymentMediator {
      * @param id the unique identifier of the payment to retrieve
      * @return a {@link Mono} emitting the found {@link PaymentDto}, or an empty {@link Mono} if no payment is found
      */
-    public Mono<PaymentDto> findById(Long id) {
-        return paymentService.findById(id)
+    public Mono<PaymentDto> findById(UUID id) {
+        return paymentService.findByGuid(id)
                 .map(paymentMapper::to);
     }
 }
