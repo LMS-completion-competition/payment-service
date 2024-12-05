@@ -36,4 +36,20 @@ public class PaymentServiceImpl implements PaymentService {
                         ))
                 );
     }
+
+    @Override
+    public Flux<Payment> findAllByStatusIn(List<PaymentStatus> statuses, Limit limit) {
+        return paymentRepository.findAllByStatusIn(statuses, limit);
+    }
+
+    @Override
+    public Mono<Payment> updatePaymentStatusToPending(Payment payment) {
+        payment.setStatus(PaymentStatus.PENDING);
+        return paymentRepository.save(payment);
+    }
+
+    @Override
+    public Mono<Payment> update(Payment payment) {
+        return paymentRepository.save(payment);
+    }
 }

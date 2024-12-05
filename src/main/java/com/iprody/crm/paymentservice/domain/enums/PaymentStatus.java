@@ -33,5 +33,10 @@ public enum PaymentStatus {
     /**
      * The payment has failed due to an error.
      */
-    ERROR
+    ERROR,
+
+    /**
+     * The payment has to be processed one more time due to some amount of failed iterations.
+     */
+    RETRY
 }
