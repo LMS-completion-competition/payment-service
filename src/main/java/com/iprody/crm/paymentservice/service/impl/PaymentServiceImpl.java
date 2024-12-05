@@ -1,14 +1,18 @@
-package com.iprody.crm.paymentservice.services.impl;
+package com.iprody.crm.paymentservice.service.impl;
 
-import com.iprody.crm.paymentservice.domains.entities.Payment;
-import com.iprody.crm.paymentservice.exceptions.PaymentNotFoundException;
-import com.iprody.crm.paymentservice.repositories.PaymentRepository;
-import com.iprody.crm.paymentservice.services.PaymentService;
+import com.iprody.crm.paymentservice.domain.entities.Payment;
+import com.iprody.crm.paymentservice.domain.enums.PaymentStatus;
+import com.iprody.crm.paymentservice.exception.PaymentNotFoundException;
+import com.iprody.crm.paymentservice.repository.PaymentRepository;
+import com.iprody.crm.paymentservice.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Limit;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.UUID;
 
 @Slf4j

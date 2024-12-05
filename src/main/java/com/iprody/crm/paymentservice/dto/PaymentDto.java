@@ -1,7 +1,7 @@
-package com.iprody.crm.paymentservice.dtos;
+package com.iprody.crm.paymentservice.dto;
 
-import com.iprody.crm.paymentservice.domains.enums.PaymentCurrency;
-import com.iprody.crm.paymentservice.domains.enums.PaymentStatus;
+import com.iprody.crm.paymentservice.domain.enums.PaymentCurrency;
+import com.iprody.crm.paymentservice.domain.enums.PaymentStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;

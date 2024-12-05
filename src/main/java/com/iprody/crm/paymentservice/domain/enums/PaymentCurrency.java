@@ -1,4 +1,4 @@
-package com.iprody.crm.paymentservice.domains.enums;
+package com.iprody.crm.paymentservice.domain.enums;
 
 /**
  * Enum representing the different currencies accepted by payment service.

@@ -1,4 +1,4 @@
-package com.iprody.crm.paymentservice.exceptions;
+package com.iprody.crm.paymentservice.exception;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;

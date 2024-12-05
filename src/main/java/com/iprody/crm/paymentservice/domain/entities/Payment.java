@@ -1,7 +1,7 @@
-package com.iprody.crm.paymentservice.domains.entities;
+package com.iprody.crm.paymentservice.domain.entities;
 
-import com.iprody.crm.paymentservice.domains.enums.PaymentCurrency;
-import com.iprody.crm.paymentservice.domains.enums.PaymentStatus;
+import com.iprody.crm.paymentservice.domain.enums.PaymentCurrency;
+import com.iprody.crm.paymentservice.domain.enums.PaymentStatus;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.Builder;

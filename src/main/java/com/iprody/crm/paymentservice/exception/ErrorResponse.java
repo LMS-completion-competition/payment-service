@@ -1,4 +1,4 @@
-package com.iprody.crm.paymentservice.exceptions;
+package com.iprody.crm.paymentservice.exception;
 
 import lombok.AccessLevel;
 import lombok.Builder;

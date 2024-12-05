@@ -1,4 +1,4 @@
-package com.iprody.crm.paymentservice.domains.enums;
+package com.iprody.crm.paymentservice.domain.enums;
 
 /**
  * Enum representing the different statuses of a payment.
@@ -11,12 +11,12 @@ package com.iprody.crm.paymentservice.domains.enums;
 public enum PaymentStatus {
 
     /**
-     * The payment is only created in database and has not started been processing.
+     * The payment is created and waiting to be processed.
      */
     NEW,
 
     /**
-     * The payment is pending and has started been processed by some provider.
+     * The payment is pending in look up process.
      */
     PENDING,
 

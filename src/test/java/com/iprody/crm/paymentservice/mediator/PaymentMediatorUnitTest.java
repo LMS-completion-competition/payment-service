@@ -1,14 +1,14 @@
-package com.iprody.crm.paymentservice.mediators;
+package com.iprody.crm.paymentservice.mediator;
 
-import com.iprody.crm.paymentservice.domains.entities.Payment;
-import com.iprody.crm.paymentservice.domains.enums.PaymentCurrency;
-import com.iprody.crm.paymentservice.domains.enums.PaymentStatus;
-import com.iprody.crm.paymentservice.dtos.PaymentCreateDto;
-import com.iprody.crm.paymentservice.dtos.PaymentDto;
-import com.iprody.crm.paymentservice.mappers.PaymentMapper;
-import com.iprody.crm.paymentservice.mappers.PaymentMapperImpl;
-import com.iprody.crm.paymentservice.services.PaymentService;
-import com.iprody.crm.paymentservice.services.impl.PaymentServiceImpl;
+import com.iprody.crm.paymentservice.domain.entities.Payment;
+import com.iprody.crm.paymentservice.domain.enums.PaymentCurrency;
+import com.iprody.crm.paymentservice.domain.enums.PaymentStatus;
+import com.iprody.crm.paymentservice.dto.PaymentCreateDto;
+import com.iprody.crm.paymentservice.dto.PaymentDto;
+import com.iprody.crm.paymentservice.mapper.PaymentMapper;
+import com.iprody.crm.paymentservice.mapper.PaymentMapperImpl;
+import com.iprody.crm.paymentservice.service.PaymentService;
+import com.iprody.crm.paymentservice.service.impl.PaymentServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;

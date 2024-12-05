@@ -1,4 +1,4 @@
-package com.iprody.crm.paymentservice.exceptions;
+package com.iprody.crm.paymentservice.exception;
 
 public class PaymentNotFoundException extends RuntimeException {
     public PaymentNotFoundException(String message) {

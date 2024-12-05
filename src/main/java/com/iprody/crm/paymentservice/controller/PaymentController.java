@@ -1,8 +1,8 @@
-package com.iprody.crm.paymentservice.controllers;
+package com.iprody.crm.paymentservice.controller;
 
-import com.iprody.crm.paymentservice.dtos.PaymentCreateDto;
-import com.iprody.crm.paymentservice.dtos.PaymentDto;
-import com.iprody.crm.paymentservice.mediators.PaymentMediator;
+import com.iprody.crm.paymentservice.dto.PaymentCreateDto;
+import com.iprody.crm.paymentservice.dto.PaymentDto;
+import com.iprody.crm.paymentservice.mediator.PaymentMediator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;

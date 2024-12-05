@@ -1,6 +1,6 @@
-package com.iprody.crm.paymentservice.dtos;
+package com.iprody.crm.paymentservice.dto;
 
-import com.iprody.crm.paymentservice.domains.enums.PaymentCurrency;
+import com.iprody.crm.paymentservice.domain.enums.PaymentCurrency;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;

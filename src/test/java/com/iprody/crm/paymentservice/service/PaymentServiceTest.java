@@ -1,10 +1,10 @@
-package com.iprody.crm.paymentservice.services;
+package com.iprody.crm.paymentservice.service;
 
-import com.iprody.crm.paymentservice.domains.entities.Payment;
-import com.iprody.crm.paymentservice.domains.enums.PaymentCurrency;
-import com.iprody.crm.paymentservice.exceptions.PaymentNotFoundException;
-import com.iprody.crm.paymentservice.repositories.PaymentRepository;
-import com.iprody.crm.paymentservice.services.impl.PaymentServiceImpl;
+import com.iprody.crm.paymentservice.domain.entities.Payment;
+import com.iprody.crm.paymentservice.domain.enums.PaymentCurrency;
+import com.iprody.crm.paymentservice.exception.PaymentNotFoundException;
+import com.iprody.crm.paymentservice.repository.PaymentRepository;
+import com.iprody.crm.paymentservice.service.impl.PaymentServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;

@@ -1,9 +1,9 @@
-package com.iprody.crm.paymentservice.mediators;
+package com.iprody.crm.paymentservice.mediator;
 
-import com.iprody.crm.paymentservice.dtos.PaymentCreateDto;
-import com.iprody.crm.paymentservice.dtos.PaymentDto;
-import com.iprody.crm.paymentservice.mappers.PaymentMapper;
-import com.iprody.crm.paymentservice.services.PaymentService;
+import com.iprody.crm.paymentservice.dto.PaymentCreateDto;
+import com.iprody.crm.paymentservice.dto.PaymentDto;
+import com.iprody.crm.paymentservice.mapper.PaymentMapper;
+import com.iprody.crm.paymentservice.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;

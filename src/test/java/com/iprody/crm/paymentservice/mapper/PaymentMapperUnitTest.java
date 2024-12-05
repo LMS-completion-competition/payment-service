@@ -1,10 +1,10 @@
-package com.iprody.crm.paymentservice.mappers;
+package com.iprody.crm.paymentservice.mapper;
 
-import com.iprody.crm.paymentservice.domains.entities.Payment;
-import com.iprody.crm.paymentservice.domains.enums.PaymentCurrency;
-import com.iprody.crm.paymentservice.domains.enums.PaymentStatus;
-import com.iprody.crm.paymentservice.dtos.PaymentCreateDto;
-import com.iprody.crm.paymentservice.dtos.PaymentDto;
+import com.iprody.crm.paymentservice.domain.entities.Payment;
+import com.iprody.crm.paymentservice.domain.enums.PaymentCurrency;
+import com.iprody.crm.paymentservice.domain.enums.PaymentStatus;
+import com.iprody.crm.paymentservice.dto.PaymentCreateDto;
+import com.iprody.crm.paymentservice.dto.PaymentDto;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
